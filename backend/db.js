@@ -50,7 +50,7 @@ const mongodb = async () => {
     const data = await fetch_data.find({}).toArray();
 
     console.log("vinay jain");
-    console.log(data);
+    // console.log(data);
 
   } catch (err) {
     console.error("Error connecting to the database:", err);
