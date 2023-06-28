@@ -9,8 +9,8 @@ function Card(props) {
 
   return (
     <div >
-                <div className="card mt-3" style={{ "width": "18rem" ,"maxHeight":"360px" }}>
-                    <img className="card-img-top" src={props.imgSrc} alt="..." />
+                <div className="card m-3" style={{ "width": "18rem" ,"maxHeight":"360px" }}>
+                    <img className="card-img-top" src={props.imgSrc} alt="..." style={{height:"150px" , objectFit:"fill"}} />
                     <div className="card-body">
                         <h5 className="card-title">{props.foodName}</h5>
                        
