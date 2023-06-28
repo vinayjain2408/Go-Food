@@ -136,12 +136,86 @@
 
 
 
+  // sir ne kuch edit kra h es code me
+// const express = require('express');
+// const app = express();
+// const cors = require('cors');
+// const port = 5000;
+// const mongodb = require('./db.js');
+
+// mongodb();
+
+// app.use(cors({ origin: 'http://localhost:3000' }));
+
+// app.use(express.json());
+
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   res.setHeader(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   next();
+// });
+
+// app.use('/api', require('./Routes/CreateUser'));
+// app.use('/api', require('./Routes/DisplayData'));
+
+// app.get('/', async (req, res) => {
+//   const fetch_data = await mongoose.connection.db.collection("food_item");
+//   fetch_data.find({}).toArray(function (err, data) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       global.food_item = data;
+//       console.log(global.food_item);
+//     }
+//   });
+//   // res.send('Hello World!');
+// });
+
+// mongodb()
+//   .then(() => {
+//     app.listen(port, () => {
+//       console.log(`Example app listening on port ${port}`);
+//     });
+//   })
+//   .catch((err) => { console.log(err) })
+
+
+
+
+// db file ka code hai 
+// async (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Connected");
+//     const fetch_data = await mongoose.connection.db.collection("food_item");
+//     fetch_data.find({}).toArray(function (err, data) {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         global.food_item = data;
+//         console.log(global.food_item);
+//       }
+//     });
+//   }
+// }
+
+
+
+
+
+
+
+
 
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const port = 5000;
-const mongodb = require('./db');
+const mongodb = require('./db.js');
 
 mongodb();
 
@@ -159,11 +233,22 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', require('./Routes/CreateUser'));
+app.use('/api', require('./Routes/DisplayData'));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/', async (req, res) => {
+  const fetch_data = await mongoose.connection.db.collection("food_item");
+  fetch_data.find({}).toArray(function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      global.food_item = data;
+      console.log(global.food_item);
+    }
+  });
+  // res.send('Hello World!');
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
+

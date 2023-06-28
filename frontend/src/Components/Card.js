@@ -1,13 +1,19 @@
 import React from 'react'
 
-function Card() {
+function Card(props) {
+
+    let options = props.option;
+    console.log(options)
+    let priceOption = Object.keys(options)
+    // console.log(priceOption)
+
   return (
     <div >
                 <div className="card mt-3" style={{ "width": "18rem" ,"maxHeight":"360px" }}>
-                    <img className="card-img-top" src="https://c.ndtvimg.com/2023-03/3g6raei8_honey-chilli-potato_625x300_21_March_23.jpg?im=FaceCrop,algorithm=dnn,width=1200,height=886" alt="..." />
+                    <img className="card-img-top" src={props.imgSrc} alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">Some quick example text to build on the card title</p>
+                        <h5 className="card-title">{props.foodName}</h5>
+                       
                         <div className='container'> 
                         <select  className='m-2 h-100  bg-success rounded'>
                             {
@@ -20,8 +26,13 @@ function Card() {
                             }
                         </select>
                         <select className='m-2 h-100  bg-success rounded'>
-                            <option value="half">Half</option>
-                            <option value="full">Full</option>
+                           {
+                            priceOption.map((dataquantity)=>{
+                                return (
+                                    <option key={dataquantity} value={dataquantity}>{dataquantity}</option>
+                                )
+                            })
+                           }
                         </select>
                         <div className='d-inline h-100 fs-5'>
                             Total price
