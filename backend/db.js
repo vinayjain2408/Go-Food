@@ -112,12 +112,12 @@ const mongodb = async () => {
     const fetch_data = mongoose.connection.db.collection("food_item");
     const data = await fetch_data.find({}).toArray();
     global.food_item = data;
-    console.log("Food items:", global.food_item);
+    // console.log("Food items:", global.food_item);
 
     const foodCategory = mongoose.connection.db.collection("food_category");
     const catData = await foodCategory.find({}).toArray();
     global.foodCategory = catData;
-    console.log("Food categories:", global.foodCategory);
+    // console.log("Food categories:", global.foodCategory);
 
   } catch (err) {
     console.error("Error connecting to the database:", err);

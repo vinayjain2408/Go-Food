@@ -60,6 +60,66 @@
 
 
 
+// import React, { useState } from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+
+// function Login() {
+//   const navigate = useNavigate();
+
+//   const [credentials, setCredentials] = useState({
+//     email: "",
+//     password: ""
+//   });
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const response = await axios.post("http://localhost:5000/api/loginuser", credentials);
+//       console.log(response.data);
+
+//       if (response.data.success) {
+
+//         localStorage.setItem("token",response.token)
+//        console.log( localStorage.setItem("token"))
+//         navigate("/");
+//       } else {
+//         alert("Enter Valid Data");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const onChange = (e) => {
+//     setCredentials({ ...credentials, [e.target.name]: e.target.value });
+//   };
+
+//   return (
+//     <div className='container'>
+//       <form onSubmit={handleSubmit}>
+//         <div className="form-group">
+//           <label htmlFor="email">Email address</label>
+//           <input type="email" className="form-control" name="email" value={credentials.email} id="email" placeholder="Enter email" onChange={onChange} />
+//         </div>
+//         <div className="form-group">
+//           <label htmlFor="password">Password</label>
+//           <input type="password" className="form-control" name="password" value={credentials.password} id="password" placeholder="Password" onChange={onChange} />
+//         </div>
+//         <button type="submit" className="btn btn-success">Submit</button>
+//         <Link to="/signup" className='m-3 btn btn-danger'>I'm a new User</Link>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Login;
+
+
+
+
+
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -68,20 +128,23 @@ function Login() {
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
-    email: "",
-    password: ""
+    email: '',
+    password: ''
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/loginuser", credentials);
+      const response = await axios.post('http://localhost:5000/api/loginuser', credentials);
       console.log(response.data);
 
       if (response.data.success) {
-        navigate("/");
+        // localStorage.setItem('token', response.data.token); // Store the token in localStorage
+        // console.log(localStorage.setItem('token')); // Store the token in localStorage
+        
+        navigate('/');
       } else {
-        alert("Enter Valid Data");
+        alert('Enter Valid Data');
       }
     } catch (error) {
       console.log(error);
@@ -95,16 +158,36 @@ function Login() {
   return (
     <div className='container'>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email address</label>
-          <input type="email" className="form-control" name="email" value={credentials.email} id="email" placeholder="Enter email" onChange={onChange} />
+        <div className='form-group'>
+          <label htmlFor='email'>Email address</label>
+          <input
+            type='email'
+            className='form-control'
+            name='email'
+            value={credentials.email}
+            id='email'
+            placeholder='Enter email'
+            onChange={onChange}
+          />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input type="password" className="form-control" name="password" value={credentials.password} id="password" placeholder="Password" onChange={onChange} />
+        <div className='form-group'>
+          <label htmlFor='password'>Password</label>
+          <input
+            type='password'
+            className='form-control'
+            name='password'
+            value={credentials.password}
+            id='password'
+            placeholder='Password'
+            onChange={onChange}
+          />
         </div>
-        <button type="submit" className="btn btn-success">Submit</button>
-        <Link to="/signup" className='m-3 btn btn-danger'>I'm a new User</Link>
+        <button type='submit' className='btn btn-success'>
+          Submit
+        </button>
+        <Link to='/signup' className='m-3 btn btn-danger'>
+          I'm a new User
+        </Link>
       </form>
     </div>
   );

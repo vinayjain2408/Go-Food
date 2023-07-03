@@ -215,9 +215,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const port = 5000;
-const mongodb = require('./db.js');
+// const mongodb = require('./db.js');
 
-mongodb();
+// mongodb();
 
 app.use(cors({ origin: 'http://localhost:3000' }));
 
